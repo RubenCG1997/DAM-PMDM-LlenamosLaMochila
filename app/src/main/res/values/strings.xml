@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Llenamos la mochila</string>
+    <string name="lbl_etiqueta">Contenido:</string>
+    <string name="cb_objeto1">Gorras</string>
+    <string name="cb_objeto2">Bañadores</string>
+    <string name="cb_objeto3">Camisetas</string>
+    <string name="cb_objeto4">Zapatos</string>
+    <string name="cb_objeto5">Pantalones</string>
+    <string name="cb_objeto6">Libros</string>
+    <string name="txt_Inicial">Peso 0.0kg</string>
+    <string name="btn_Borrar">Vaciar mochila</string>
+
+</resources>
