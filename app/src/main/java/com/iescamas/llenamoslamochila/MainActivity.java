@@ -15,9 +15,7 @@ import java.util.HashSet;
 public class MainActivity extends AppCompatActivity {
 
     HashSet<String> objetosSeleccionados = new HashSet<>();
-    CheckBox cb_objeto1,cb_objeto2,cb_objeto3,cb_objeto4,cb_objeto5,cb_objeto6;
     TextView txt_peso;
-    Button btn_Borrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
