@@ -24,22 +24,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cb_objeto1 = findViewById(R.id.cb_objeto1);
-        cb_objeto2 = findViewById(R.id.cb_objeto2);
-        cb_objeto3 = findViewById(R.id.cb_objeto3);
-        cb_objeto4 = findViewById(R.id.cb_objeto4);
-        cb_objeto5 = findViewById(R.id.cb_objeto5);
-        cb_objeto6 = findViewById(R.id.cb_objeto6);
         txt_peso = findViewById(R.id.txt_Inicial);
-        btn_Borrar = findViewById(R.id.btn_Borrar);
 
-        cb_objeto1.setOnClickListener(view -> ListaSeleccionada(view));
-        cb_objeto2.setOnClickListener(view -> ListaSeleccionada(view));
-        cb_objeto3.setOnClickListener(view -> ListaSeleccionada(view));
-        cb_objeto4.setOnClickListener(view -> ListaSeleccionada(view));
-        cb_objeto5.setOnClickListener(view -> ListaSeleccionada(view));
-        cb_objeto6.setOnClickListener(view -> ListaSeleccionada(view));
-        btn_Borrar.setOnClickListener(view -> Vaciado());
+        findViewById(R.id.cb_objeto1).setOnClickListener(this::ListaSeleccionada);
+        findViewById(R.id.cb_objeto2).setOnClickListener(this::ListaSeleccionada);
+        findViewById(R.id.cb_objeto3).setOnClickListener(this::ListaSeleccionada);
+        findViewById(R.id.cb_objeto4).setOnClickListener(this::ListaSeleccionada);
+        findViewById(R.id.cb_objeto5).setOnClickListener(this::ListaSeleccionada);
+        findViewById(R.id.cb_objeto6).setOnClickListener(this::ListaSeleccionada);
+        findViewById(R.id.btn_Borrar).setOnClickListener(view -> Vaciado());
     }
     private void ListaSeleccionada(View v){
 
@@ -49,22 +42,13 @@ public class MainActivity extends AppCompatActivity {
         //Guardamos el nombre en lista de objetos que Set
         //No permite repetir nombres iguales
         String objeto = cb.getText().toString();
-        if(cb.isChecked()){
-            objetosSeleccionados.add(objeto);
-        }
-        else {
-            objetosSeleccionados.remove(objeto);
-        }
-
+        boolean check = cb.isChecked() ? objetosSeleccionados.add(objeto) : objetosSeleccionados.remove(objeto);
         pesoActual = calculo(objetosSeleccionados);
-
-        if(pesoActual>17) {
-            txt_peso.setTextColor(ContextCompat.getColor(this,R.color.pesoPasado));
+        if (pesoActual > 17) {
+            txt_peso.setTextColor(getResources().getColor(R.color.pesoPasado));
+        } else {
+            txt_peso.setTextColor(getResources().getColor(R.color.black));
         }
-        else{
-            txt_peso.setTextColor(ContextCompat.getColor(this,R.color.black));
-        }
-
         txt_peso.setText("Peso " +(pesoActual)+ "kg");
 
     }
@@ -111,14 +95,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void Vaciado(){
 
-            objetosSeleccionados.clear();
-            cb_objeto1.setChecked(false);
-            cb_objeto2.setChecked(false);
-            cb_objeto3.setChecked(false);
-            cb_objeto4.setChecked(false);
-            cb_objeto5.setChecked(false);
-            cb_objeto6.setChecked(false);
-
+        objetosSeleccionados.clear();
+        ((CheckBox)findViewById(R.id.cb_objeto1)).setChecked(false);
+        ((CheckBox)findViewById(R.id.cb_objeto2)).setChecked(false);
+        ((CheckBox)findViewById(R.id.cb_objeto3)).setChecked(false);
+        ((CheckBox)findViewById(R.id.cb_objeto4)).setChecked(false);
+        ((CheckBox)findViewById(R.id.cb_objeto5)).setChecked(false);
+        ((CheckBox)findViewById(R.id.cb_objeto6)).setChecked(false);
         txt_peso.setTextColor(ContextCompat.getColor(this,R.color.black));
         txt_peso.setText("Peso " +0.0+ "kg");
     }
